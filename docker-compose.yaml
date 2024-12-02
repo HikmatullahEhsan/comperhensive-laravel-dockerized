@@ -16,7 +16,6 @@ services:
     volumes:
       - ./src:/var/www/html
     user: root
-    
   mysql:
     image: mysql:5.7 
     env_file:
@@ -25,5 +24,18 @@ services:
     build: 
       context: ./dockerfiles 
       dockerfile: composer.dockerfile
+    volumes:
+      - ./src:/var/www/html
+  artisan:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+    volumes:
+      - ./src:/var/www/html
+    entrypoint: ["php", '/var/www/html/artisan']
+  npm:
+    image: node:latest 
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
     volumes:
       - ./src:/var/www/html
