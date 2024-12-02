@@ -1,5 +1,3 @@
-# version: '3.8'
-
 services:
   server:
     image: 'nginx:stable-alpine'
@@ -11,13 +9,13 @@ services:
     depends_on: 
       - php
       - mysql
-    command: /bin/sh -c "chown -R www-data:www-data /var/www/html/storage && chmod -R 775 /var/www/html/storage && nginx -g 'daemon off;'"
   php:
     build:
       context: ./dockerfiles
       dockerfile: php.dockerfile
     volumes:
-      - ./src:/var/www/html:delegated
+      - ./src:/var/www/html
+    user: root
     
   mysql:
     image: mysql:5.7 
@@ -29,5 +27,3 @@ services:
       dockerfile: composer.dockerfile
     volumes:
       - ./src:/var/www/html
-  # artisan:
-  # npm:
