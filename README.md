@@ -2,7 +2,7 @@
 
 This repository contains a Dockerized Laravel application setup. It uses `docker-compose` to run the necessary services such as Nginx, PHP, MySQL, Composer, Artisan, and NPM in a containerized environment.
 
-## Requirements
+## Requirements and dependencies
 
 - Docker
 - Docker Compose
