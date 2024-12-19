@@ -39,4 +39,3 @@ services:
     entrypoint: ["npm"]
     volumes:
       - ./src:/var/www/html
-#
